@@ -1,0 +1,2 @@
+# stdmgmt
+students management system

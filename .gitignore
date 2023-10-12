@@ -1,4 +1,5 @@
 ./env
 instance/
+stdmgmt/__pycache__/
 stdmgmt/static/studentPics/* 
 !stdmgmt/static/studentPics/.gitkeep

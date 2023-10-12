@@ -6,4 +6,4 @@ app.app_context().push()
 
 s = Student.query.all()
 for i in s:
-    print(i.id, i.picture)
+    print(i.id, i.registrationNumber, i.picture)

@@ -1,9 +1,11 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, SelectField, SubmitField, DateField, IntegerField, BooleanField
 from wtforms.validators import DataRequired, Length, NumberRange
 
 class StudentRegistrationForm(FlaskForm):
     registrationNumber = StringField('registrationNumber', validators=[DataRequired(), Length(min=2, max=100)])
+    picture = FileField('picture', validators=[DataRequired(), FileAllowed(['jpg', 'png', 'jpeg'])])
     frenchLastName = StringField('frenchLastName', validators=[DataRequired(), Length(min=2, max=100)])
     frenchFirstName = StringField('frenchFirstName', validators=[DataRequired(), Length(min=2, max=100)])
     arabicLastName = StringField('arabicLastName', validators=[DataRequired(), Length(min=2, max=100)])

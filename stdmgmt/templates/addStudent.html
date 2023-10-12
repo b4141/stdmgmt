@@ -2,7 +2,7 @@
 {% block content %}
 
   <div class="add-student-form-container">
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
       {{ form.hidden_tag() }}
 
       <p>general info</p>
@@ -10,6 +10,16 @@
       <div class="form-group">
         {{ form.registrationNumber.label(class="form-label") }}
         {{ form.registrationNumber(class="form-input", autocomplete="off") }}
+      </div>
+
+      <div class="form-group">
+        {{ form.picture.label(class="form-label") }}
+        {{ form.picture(class="form-input", autocomplete="off") }}
+        {% if form.picture.errors %}
+          {% for error in form.picture.errors %}
+            <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        {% endif %}
       </div>
 
       <div class="form-group">
@@ -157,10 +167,27 @@
   </div>
 
   <script>
+    function makeid(length) {
+      let result = '';
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const charactersLength = characters.length;
+      let counter = 0;
+      while (counter < length) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+      }
+      return result;
+    } 
+
+
     let inputs = document.getElementsByTagName("input");
     for (let i=1 ; i<inputs.length-1 ; i++){
       if (inputs[i].type === "text") {
-        inputs[i].value = "inputValue";
+        if (inputs[i].name === "registrationNumber"){
+          inputs[i].value = makeid(10);
+        }else{
+          inputs[i].value = "inputValue";
+        }
       }else if (inputs[i].type === "date") {
         inputs[i].value = "2000-01-01";
       }else if (inputs[i].type === "number") {

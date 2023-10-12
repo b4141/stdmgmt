@@ -5,6 +5,7 @@ from stdmgmt import db
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     registrationNumber = db.Column(db.String(100), unique=True, nullable=False)
+    picture = db.Column(db.String(300), unique=True, nullable=False)
     frenchLastName = db.Column(db.String(100), nullable=False)
     frenchFirstName = db.Column(db.String(100), nullable=False)
     arabicLastName = db.Column(db.String(100), nullable=False)
@@ -36,6 +37,6 @@ class Student(db.Model):
     parentPhoneNumber = db.Column(db.String(100))
 
     def __repr__(self):
-        return f"{self.registrationNumber} -> {self.frenchLastName}"
+        return f"sn: {self.registrationNumber}, lastName: {self.frenchLastName}, jDate: {self.joiningDate}"
 
 

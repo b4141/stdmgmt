@@ -1,2 +1,4 @@
 ./env
 instance/
+stdmgmt/static/studentPics/* 
+!stdmgmt/static/studentPics/.gitkeep

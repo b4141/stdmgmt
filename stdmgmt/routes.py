@@ -16,13 +16,16 @@ def saveStudentPicture(formPicture):
 
 @app.route("/")
 def index():
+    # flash("Successfully added a new Student", "success")
+    # flash("Successfully added a new Student", "error")
     return render_template('index.html', title="home page")
 
 @app.route("/studentProfile/<studentNumber>")
 def studentProfile(studentNumber):
     try:
         student = Student.query.filter(Student.registrationNumber == str(studentNumber)).first()
-        return f"{student.registrationNumber}, {student.picture}"
+        # return f"{student.registrationNumber}, {student.picture}"
+        return render_template('studentProfile.html', title="student profile", student=student)
     except:
         return "student does not exist"
 

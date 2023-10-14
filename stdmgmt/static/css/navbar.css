@@ -1,0 +1,32 @@
+.navbar-separator {
+  height: 1px;
+  width: 90%;
+  background-color: var(--fg-color-1);
+  margin-left: 5%;
+}
+
+.navbar-container {
+  height: 80px;
+  width: 80%;
+  margin-left: 10%;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: var(--bg-color);
+  gap: 0.3em;
+}
+
+.search-box-container {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.3em;
+  margin-right: 4em;
+}
+
+.config-btn-container {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.3em;
+}

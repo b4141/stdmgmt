@@ -8,17 +8,75 @@
       StdMgmt
     {% endif %}
     </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lightTheme.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
   </head>
   <body>
-    <h1>navbar</h1>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert alert-{{ category }}">{{ message }}</div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-    {% block content %}{% endblock content %}
+
+    <div class="app-wrapper">
+
+      <div class="navbar-container">
+
+        <div class="search-box-container">
+          <input class="input" type="text">
+          <button class="button search-btn">se</button>
+        </div>
+
+        <button class="button">Add Student</button>
+        <button class="button">All Students</button>
+
+        <div class="config-btn-container">
+          <button class="button config-btn">Ar</button>
+          <button class="button config-btn theme-btn" onclick="changeTheme()">☀️</button>
+        </div>
+
+      </div>
+
+      <div class="navbar-separator"></div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" onclick="this.remove()">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      
+      <div class="content-wrapper">
+        {% block content %}{% endblock content %}
+      </div>
+
+    </div>
+
+    <script>
+      let themeToggle = 0;
+      function onLoad(){
+        let themeStyleSheet = document.getElementsByTagName("link")[0];
+        let currentTheme = localStorage.getItem("theme");
+        if(currentTheme === "dark"){
+          themeToggle = 1;
+          themeStyleSheet.href = "{{ url_for('static', filename='css/darkTheme.css') }}"
+        }else if(currentTheme === "light"){
+          themeToggle = 0;
+          themeStyleSheet.href = "{{ url_for('static', filename='css/lightTheme.css') }}"
+        }
+      }
+
+      function changeTheme(){
+        themeToggle ++;
+        let themeStyleSheet = document.getElementsByTagName("link")[0];
+        if (themeToggle%2 === 0){
+          themeStyleSheet.href = "{{ url_for('static', filename='css/lightTheme.css') }}"
+          localStorage.setItem("theme", "light"); 
+        }else{
+          themeStyleSheet.href = "{{ url_for('static', filename='css/darkTheme.css') }}"
+          localStorage.setItem("theme", "dark"); 
+        }
+      }
+
+      onLoad();
+    </script>
   </body>
 </html>

@@ -1,0 +1,107 @@
+.profile {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 2fr;
+  margin-top: 4em;
+  gap: 1em;
+}
+
+.profile .left-content-wrapper {
+  background-color: var(--bg-color);
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid var(--fg-color-2);
+  padding-right: 1em;
+}
+
+.profile .left-content {
+  background-color: var(--bg-color);
+  width: 100%;
+  display: grid;
+  gap: 5em;
+  place-items: center;
+  max-height: 800px;
+}
+
+.profile .left-content .profile-pic {
+  width: 200px;
+  border: 1px solid var(--fg-color-2);
+  border-radius: 2px;
+}
+
+.profile .left-content .french-name {
+  display: grid;
+  place-items: center;
+  gap: 1em;
+  color: var(--fg-color-1);
+}
+
+.profile .left-content .contact {
+  display: grid;
+  place-items: center;
+  gap: 1em;
+}
+
+
+.profile .left-content .contact {
+  color: var(--fg-color-1);
+}
+
+.profile .left-content .contact .address {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  place-items: center;
+}
+
+.profile .left-content .contact .phone-number {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  place-items: center;
+}
+
+.profile .right-content {
+  background-color: var(--bg-color);
+  width: 100%;
+  height: 100%;
+}
+
+.profile .right-content .info-section {
+  display: grid;
+  place-items: center;
+  gap: 1em;
+  margin: 2em 0 2em 0;
+  width: 100%;
+}
+
+.profile .right-content .info-section .one-cell-info-output {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  text-align: right;
+  gap: 1em;
+}
+
+.profile .right-content .info-section .two-cell-info-output {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  gap: 1em;
+}
+
+.profile .right-content .info-section .two-cell-info-output .two-cell-info-output-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: right;
+  gap: 1em;
+}
+
+.profile .right-content .info-section .info-real {
+  color: var(--fg-color-1);
+}
+
+.profile .right-content .info-section .info-label {
+  color: var(--fg-color-2);
+}

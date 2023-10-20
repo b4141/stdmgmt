@@ -23,9 +23,9 @@ class Student(db.Model):
     motherProfession = db.Column(db.String(100))
     address = db.Column(db.String(100), nullable=False)
 
-    parentsDivorced = db.Column(db.Boolean, nullable=False, default=False)
-    fatherDead = db.Column(db.Boolean, nullable=False, default=False)
-    motherDead = db.Column(db.Boolean, nullable=False, default=False)
+    parentsDivorced = db.Column(db.Boolean, default=False)
+    fatherDead = db.Column(db.Boolean, default=False)
+    motherDead = db.Column(db.Boolean, default=False)
     fatherDeathDate = db.Column(db.Date)
     motherDeathDate = db.Column(db.Date)
 

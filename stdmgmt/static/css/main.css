@@ -70,6 +70,12 @@ body {
   max-width: 42px;
 }
 
+.search-btn {
+  display: grid;
+  place-items: center;
+  max-width: 42px;
+}
+
 .theme-btn-svg {
   width: 15px;
   height: 15px;

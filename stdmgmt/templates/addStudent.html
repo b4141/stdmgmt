@@ -8,13 +8,11 @@
       <p>general info</p>
 
       <div class="form-group">
-        {{ form.registrationNumber.label(class="form-label") }}
         {{ form.registrationNumber(class="form-input", autocomplete="off") }}
+        <div class="form-label">: رقم التسجيل</div>
       </div>
 
-      <div class="form-group">
-        {{ form.picture.label(class="form-label") }}
-        {{ form.picture(class="form-input", autocomplete="off") }}
+      <div class="errors">
         {% if form.picture.errors %}
           {% for error in form.picture.errors %}
             <span class="text-danger">{{ error }}</span>
@@ -23,139 +21,152 @@
       </div>
 
       <div class="form-group">
-        {{ form.frenchLastName.label(class="form-label") }}
+        {{ form.picture(class="form-input", autocomplete="off", id="picture-input") }}
+        <div class="form-label">: الصورة</div>
+      </div>
+
+      <div class="errors">
+        {% if form.picture.errors %}
+          {% for error in form.picture.errors %}
+            <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
         {{ form.frenchLastName(class="form-input", autocomplete="off") }}
+        <div class="form-label">: اللقب بالفرنسية</div>
       </div>
 
       <div class="form-group">
-        {{ form.frenchFirstName.label(class="form-label") }}
         {{ form.frenchFirstName(class="form-input", autocomplete="off") }}
+        <div class="form-label">: الإسم بالفرنسية</div>
       </div>
 
       <div class="form-group">
-        {{ form.arabicLastName.label(class="form-label") }}
         {{ form.arabicLastName(class="form-input", autocomplete="off") }}
+        <div class="form-label">: اللقب بالعربية</div>
       </div>
 
       <div class="form-group">
-        {{ form.arabicFirstName.label(class="form-label") }}
         {{ form.arabicFirstName(class="form-input", autocomplete="off") }}
+        <div class="form-label">: الإسم بالعربية</div>
       </div>
 
       <div class="form-group">
-        {{ form.grade.label(class="form-label") }}
         {{ form.grade(class="form-input", autocomplete="off") }}
+        <div class="form-label">: الرتبة</div>
       </div>
 
       <div class="form-group">
-        {{ form.nationality.label(class="form-label") }}
         {{ form.nationality(class="form-input", autocomplete="off") }}
+        <div class="form-label">: الجنسية</div>
       </div>
 
       <div class="form-group">
-        {{ form.bloodGroup.label(class="form-label") }}
         {{ form.bloodGroup(class="form-input", autocomplete="off") }}
+        <div class="form-label">: فصيلة الدم</div>
       </div>
 
       <div class="form-group">
-        {{ form.birthDate.label(class="form-label") }}
         {{ form.birthDate(class="form-input", autocomplete="off") }}
+        <div class="form-label">: تاريخ الإزدياد</div>
       </div>
 
       <div class="form-group">
-        {{ form.birthPlace.label(class="form-label") }}
         {{ form.birthPlace(class="form-input", autocomplete="off") }}
+        <div class="form-label">: مكان الإزدياد</div>
       </div>
 
       <p>family info</p>
 
       <div class="form-group">
-        {{ form.fatherName.label(class="form-label") }}
         {{ form.fatherName(class="form-input", autocomplete="off") }}
+        <div class="form-label">: إسم الأب</div>
       </div>
 
       <div class="form-group">
-        {{ form.fatherProfession.label(class="form-label") }}
         {{ form.fatherProfession(class="form-input", autocomplete="off") }}
+        <div class="form-label">: مهنة الأب</div>
       </div>
 
       <div class="form-group">
-        {{ form.motherName.label(class="form-label") }}
         {{ form.motherName(class="form-input", autocomplete="off") }}
+        <div class="form-label">: إسم الأم</div>
       </div>
 
       <div class="form-group">
-        {{ form.motherProfession.label(class="form-label") }}
         {{ form.motherProfession(class="form-input", autocomplete="off") }}
+        <div class="form-label">: مهنة الأم</div>
       </div>
 
       <div class="form-group">
-        {{ form.address.label(class="form-label") }}
         {{ form.address(class="form-input", autocomplete="off") }}
+        <div class="form-label">: العنوان</div>
       </div>
 
       <div class="form-group">
-        {{ form.parentsDivorced.label(class="form-label") }}
         {{ form.parentsDivorced(class="form-input", autocomplete="off") }}
+        <div class="form-label">: الأبوان مطلقان</div>
       </div>
 
 
       
       <div class="form-group">
-        {{ form.fatherDead.label(class="form-label") }}
         {{ form.fatherDead(class="form-input", autocomplete="off") }}
+        <div class="form-label">: الأب متوفى</div>
       </div>
 
       <div class="form-group">
-        {{ form.fatherDeathDate.label(class="form-label") }}
         {{ form.fatherDeathDate(class="form-input", autocomplete="off") }}
+        <div class="form-label">: تاريخ وفاة الأب</div>
       </div>
 
       <div class="form-group">
-        {{ form.motherDead.label(class="form-label") }}
         {{ form.motherDead(class="form-input", autocomplete="off") }}
+        <div class="form-label">: الأم متوفيه</div>
       </div>
 
       <div class="form-group">
-        {{ form.motherDeathDate.label(class="form-label") }}
         {{ form.motherDeathDate(class="form-input", autocomplete="off") }}
+        <div class="form-label">: تاريخ وفاة الأم</div>
       </div>
 
 
 
 
       <div class="form-group">
-        {{ form.siblingsNumber.label(class="form-label") }}
         {{ form.siblingsNumber(class="form-input", autocomplete="off", max="50", min="0") }}
+        <div class="form-label">: عدد الإخوة</div>
       </div>
 
       <p>join info</p>
 
       <div class="form-group">
-        {{ form.joiningDate.label(class="form-label") }}
         {{ form.joiningDate(class="form-input", autocomplete="off") }}
+        <div class="form-label">: تاريخ االنخراط</div>
       </div>
 
       <div class="form-group">
-        {{ form.arrivalDate.label(class="form-label") }}
         {{ form.arrivalDate(class="form-input", autocomplete="off") }}
+        <div class="form-label">: تاريخ االلتحاق بالمدرسة</div>
       </div>
 
       <div class="form-group">
-        {{ form.departureDate.label(class="form-label") }}
         {{ form.departureDate(class="form-input", autocomplete="off") }}
+        <div class="form-label">: تاريخ مغادرة المدرسة</div>
       </div>
 
       <p>contact</p>
 
       <div class="form-group">
-        {{ form.phoneNumber.label(class="form-label") }}
         {{ form.phoneNumber(class="form-input", autocomplete="off") }}
+        <div class="form-label">: رقم الهاتف المحمول</div>
       </div>
 
       <div class="form-group">
-        {{ form.parentPhoneNumber.label(class="form-label") }}
         {{ form.parentPhoneNumber(class="form-input", autocomplete="off") }}
+        <div class="form-label">: رقم هاتف الولي</div>
       </div>
 
       <div class="form-submit">
@@ -179,21 +190,23 @@
       return result;
     } 
 
-
-    let inputs = document.getElementsByTagName("input");
-    for (let i=1 ; i<inputs.length-1 ; i++){
-      if (inputs[i].type === "text") {
-        if (inputs[i].name === "registrationNumber"){
-          inputs[i].value = makeid(10);
-        }else{
-          inputs[i].value = "inputValue";
+    function fill(){
+      let inputs = document.getElementsByTagName("input");
+      for (let i=1 ; i<inputs.length-1 ; i++){
+        if (inputs[i].type === "text") {
+          if (inputs[i].name === "registrationNumber"){
+            inputs[i].value = makeid(10);
+          }else{
+            inputs[i].value = "inputValue";
+          }
+        }else if (inputs[i].type === "date") {
+          inputs[i].value = "2000-01-01";
+        }else if (inputs[i].type === "number") {
+          inputs[i].value = "3";
         }
-      }else if (inputs[i].type === "date") {
-        inputs[i].value = "2000-01-01";
-      }else if (inputs[i].type === "number") {
-        inputs[i].value = "3";
       }
     }
+
   </script>
 
 {% endblock content %}

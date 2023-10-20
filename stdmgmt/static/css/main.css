@@ -22,11 +22,11 @@ body {
 }
 
 .alert-success {
-  background-color: #52a752;
+  background-color: var(--success-color);
 }
 
 .alert-error {
-  background-color: #d76969;
+  background-color: var(--error-color);
 }
 
 .button {

@@ -444,9 +444,35 @@
 
 
       </form>
+
+      <button onclick="showDeleteWindow()" class="delete-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="var(--bg-color)" width="15" height="15" viewBox="0 0 24 24"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm10.618-3L15 2H9L7.382 4H3v2h18V4z"/></svg>
+        <span>حذف</span>
+      </button>
+
+      <div id="delete-window" class="delete-confirmation-wrapper">
+        <div class="delete-confirmation-window">
+          <p>هل أنت متأكد أنك تريد حذف هذا الطالب</p>
+          <button class="delete-btn" onclick="deleteStudent({{ student.id }})">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="var(--bg-color)" width="15" height="15" viewBox="0 0 24 24"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm10.618-3L15 2H9L7.382 4H3v2h18V4z"/></svg>
+            <span>حذف</span>
+          </button>
+          <button class="button delete-window-exit-button" onclick="exitDeleteWindow()">X</button>
+        </div>
+      </div>
+
     </div>
 
+
     <script>
+
+      function showDeleteWindow(){
+        document.getElementById("delete-window").style.display = "grid";
+      }
+
+      function exitDeleteWindow(){
+        document.getElementById("delete-window").style.display = "none";
+      }
 
       function readURL(input){
         if (input.files && input.files[0]){
@@ -456,6 +482,10 @@
           }
           reader.readAsDataURL(input.files[0]);
         }
+      }
+
+      function deleteStudent(studentId){
+        console.log(studentId)
       }
 
     </script>

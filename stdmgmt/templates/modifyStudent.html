@@ -1,0 +1,465 @@
+{% extends "layout.html" %}
+{% block content %}
+  {% if student == None %}
+    <div class="profile-none">
+      <span>
+        هذا الطالب غير مسجل
+      </span>
+    </div>
+  {% else %}
+
+    <div class="modify-student-form-container">
+      <form action="" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <p class="section-title">معلومات عامة</p>
+
+        <div class="form-group">
+          {{ form.registrationNumber(class="form-input", autocomplete="off") }}
+          <div class="form-label">: رقم التسجيل</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.registrationNumber.errors %}
+              {% for error in form.registrationNumber.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+
+        <div class="form-group">
+          {{ form.frenchLastName(class="form-input", autocomplete="off") }}
+          <div class="form-label">: اللقب بالفرنسية</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.frenchLastName.errors %}
+              {% for error in form.frenchLastName.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.frenchFirstName(class="form-input", autocomplete="off") }}
+          <div class="form-label">: الإسم بالفرنسية</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.frenchFirstName.errors %}
+              {% for error in form.frenchFirstName.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.arabicLastName(class="form-input", autocomplete="off") }}
+          <div class="form-label">: اللقب بالعربية</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.arabicLastName.errors %}
+              {% for error in form.arabicLastName.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.arabicFirstName(class="form-input", autocomplete="off") }}
+          <div class="form-label">: الإسم بالعربية</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.arabicFirstName.errors %}
+              {% for error in form.arabicFirstName.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.grade(class="form-input", autocomplete="off") }}
+          <div class="form-label">: الرتبة</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.grade.errors %}
+              {% for error in form.grade.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.nationality(class="form-input", autocomplete="off") }}
+          <div class="form-label">: الجنسية</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.nationality.errors %}
+              {% for error in form.nationality.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.bloodGroup(class="form-input", autocomplete="off") }}
+          <div class="form-label">: فصيلة الدم</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.bloodGroup.errors %}
+              {% for error in form.bloodGroup.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.birthDate(class="form-input", autocomplete="off") }}
+          <div class="form-label">: تاريخ الإزدياد</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.birthDate.errors %}
+              {% for error in form.birthDate.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.birthPlace(class="form-input", autocomplete="off") }}
+          <div class="form-label">: مكان الإزدياد</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.birthPlace.errors %}
+              {% for error in form.birthPlace.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <p class="section-title">الحالة العائلية</p>
+
+        <div class="form-group">
+          {{ form.fatherName(class="form-input", autocomplete="off") }}
+          <div class="form-label">: إسم الأب</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.fatherName.errors %}
+              {% for error in form.fatherName.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.fatherProfession(class="form-input", autocomplete="off") }}
+          <div class="form-label">: مهنة الأب</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.fatherProfession.errors %}
+              {% for error in form.fatherProfession.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.motherName(class="form-input", autocomplete="off") }}
+          <div class="form-label">: إسم الأم</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.motherName.errors %}
+              {% for error in form.motherName.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.motherProfession(class="form-input", autocomplete="off") }}
+          <div class="form-label">: مهنة الأم</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.motherProfession.errors %}
+              {% for error in form.motherProfession.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.address(class="form-input", autocomplete="off") }}
+          <div class="form-label">: العنوان</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.address.errors %}
+              {% for error in form.address.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.parentsDivorced(class="form-input", autocomplete="off") }}
+          <div class="form-label">: الأبوان مطلقان</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.parentsDivorced.errors %}
+              {% for error in form.parentsDivorced.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+
+      
+        <div class="form-group">
+          {{ form.fatherDead(class="form-input", autocomplete="off") }}
+          <div class="form-label">: الأب متوفى</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.fatherDead.errors %}
+              {% for error in form.fatherDead.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.fatherDeathDate(class="form-input", autocomplete="off") }}
+          <div class="form-label">: تاريخ وفاة الأب</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.fatherDeathDate.errors %}
+              {% for error in form.fatherDeathDate.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.motherDead(class="form-input", autocomplete="off") }}
+          <div class="form-label">: الأم متوفيه</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.motherDead.errors %}
+              {% for error in form.motherDead.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.motherDeathDate(class="form-input", autocomplete="off") }}
+          <div class="form-label">: تاريخ وفاة الأم</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.motherDeathDate.errors %}
+              {% for error in form.motherDeathDate.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+
+
+
+        <div class="form-group">
+          {{ form.siblingsNumber(class="form-input", autocomplete="off", max="50", min="0") }}
+          <div class="form-label">: عدد الإخوة</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.siblingsNumber.errors %}
+              {% for error in form.siblingsNumber.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <p class="section-title">معلومات الإلتحاق</p>
+
+        <div class="form-group">
+          {{ form.joiningDate(class="form-input", autocomplete="off") }}
+          <div class="form-label">: تاريخ االنخراط</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.joiningDate.errors %}
+              {% for error in form.joiningDate.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.arrivalDate(class="form-input", autocomplete="off") }}
+          <div class="form-label">: تاريخ االلتحاق بالمدرسة</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.arrivalDate.errors %}
+              {% for error in form.arrivalDate.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.departureDate(class="form-input", autocomplete="off") }}
+          <div class="form-label">: تاريخ مغادرة المدرسة</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.departureDate.errors %}
+              {% for error in form.departureDate.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <p class="section-title">طرق الإتصال</p>
+
+        <div class="form-group">
+          {{ form.phoneNumber(class="form-input", autocomplete="off") }}
+          <div class="form-label">: رقم الهاتف المحمول</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.phoneNumber.errors %}
+              {% for error in form.phoneNumber.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+        <div class="form-group">
+          {{ form.parentPhoneNumber(class="form-input", autocomplete="off") }}
+          <div class="form-label">: رقم هاتف الولي</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.parentPhoneNumber.errors %}
+              {% for error in form.parentPhoneNumber.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+
+        <p class="section-title">طرق الإتصال</p>
+      
+        <div class="form-group">
+          <label class="change-picture">
+            <img src="{{ url_for('static', filename='studentPics/{}'.format(student.picture)) }}?a" alt="" id="student-picture">
+            {{ form.picture(class="form-input", autocomplete="off", id="picture-input", onchange="readURL(this);") }}
+          </label>
+          <div class="form-label">: الصورة</div>
+        </div>
+        <div class="form-group">
+          <div class="errors">
+            {% if form.picture.errors %}
+              {% for error in form.picture.errors %}
+                <span class="text-danger">{{ error }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+          <div></div>
+        </div>
+
+      
+        <div class="form-submit">
+          {{ form.submit(class="form-input button", autocomplete="off") }}
+        </div>
+
+
+      </form>
+    </div>
+
+    <script>
+
+      function readURL(input){
+        if (input.files && input.files[0]){
+          let reader = new FileReader();
+          reader.onload = function(e){
+            document.getElementById("student-picture").src = e.target.result;
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+
+    </script>
+
+  {% endif %}
+{% endblock content %}
+

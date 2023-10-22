@@ -1,68 +1,60 @@
-import secrets
 import os
 from flask import render_template, flash, redirect, url_for
 from stdmgmt import app, db
-from stdmgmt.forms import StudentRegistrationForm
+from stdmgmt.forms import StudentRegistrationForm, StudentModifyForm
 from stdmgmt.models import Student
+from stdmgmt.utils import *
 
-def saveStudentPicture(formPicture):
-    random_hex = secrets.token_hex(8)
-    _, f_ext = os.path.splitext(formPicture.filename)
-    picture_fn = random_hex + f_ext
-    picture_path = os.path.join(app.root_path, 'static/studentPics', picture_fn)
-    formPicture.save(picture_path)
-    return picture_fn
 
 
 @app.route("/")
 def index():
     return render_template('index.html', title="home page")
 
+
 @app.route("/studentProfile/<studentNumber>")
 def studentProfile(studentNumber):
     student = Student.query.filter(Student.registrationNumber == str(studentNumber)).first()
     return render_template('studentProfile.html', title="student profile", student=student)
+
+
+
+@app.route("/modifyStudent/<studentNumber>", methods=['GET', 'POST'])
+def modifyStudent(studentNumber):
+    student = Student.query.filter(Student.registrationNumber == str(studentNumber)).first()
+    form = StudentModifyForm()
+
+    if form.validate_on_submit():
+
+        student = Student.query.filter(Student.id == student.id).first()
+        student = reassignStudentInfo(student, form)
+        #__put_the_code_here
+        if form.data['picture'] != None:
+            print("----", student.picture)
+            print("----", form.picture.data)
+            _ = saveStudentPicture(form.picture.data, student.picture)
+           
+        db.session.commit()
+        return redirect(url_for('index'))
+
+    if student != None:
+        form = fillForm(form, student)
+    # print("image :", student.picture)
+    return render_template('modifyStudent.html', title="Student registration", form=form, student=student)
+
+
 
 @app.route("/addStudent", methods=['GET', 'POST'])
 def addStudent():
     form = StudentRegistrationForm()
     if form.validate_on_submit():
         try:
-            try:
-                if Student.query.filter(Student.registrationNumber == str(form.registrationNumber.data)).first():
-                    flash(f'the registration number "{form.registrationNumber.data}" already exists', "error")
-                    return redirect(url_for('index'))
-            except:
-                pass
+            if Student.query.filter(Student.registrationNumber == str(form.registrationNumber.data)).first():
+                print("student exists")
+                flash(f'the registration number "{form.registrationNumber.data}" already exists', "error")
+                return redirect(url_for('index'))
                 
-            student = Student(
-                registrationNumber = form.registrationNumber.data,
-                picture = saveStudentPicture(form.picture.data),
-                frenchLastName = form.frenchLastName.data,
-                frenchFirstName = form.frenchFirstName.data,
-                arabicLastName = form.arabicLastName.data,
-                arabicFirstName = form.arabicFirstName.data,
-                grade = form.grade.data,
-                nationality = form.nationality.data,
-                bloodGroup = form.bloodGroup.data,
-                birthDate = form.birthDate.data,
-                birthPlace = form.birthPlace.data,
-                fatherName = form.fatherName.data,
-                fatherProfession = form.fatherProfession.data,
-                motherName = form.motherName.data,
-                motherProfession = form.motherProfession.data,
-                address = form.address.data,
-                parentsDivorced = form.parentsDivorced.data,
-                fatherDead = form.fatherDead.data,
-                fatherDeathDate = form.fatherDeathDate.data,
-                motherDead = form.motherDead.data,
-                motherDeathDate = form.motherDeathDate.data,
-                siblingsNumber = form.siblingsNumber.data,
-                joiningDate = form.joiningDate.data,
-                arrivalDate = form.arrivalDate.data,
-                departureDate = form.departureDate.data,
-                phoneNumber = form.phoneNumber.data,
-                parentPhoneNumber = form.parentPhoneNumber.data)
+            student = createStudent(form)
             db.session.add(student)
             db.session.commit()
             flash("Successfully added a new Student", "success")

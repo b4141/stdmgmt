@@ -1,0 +1,108 @@
+.modify-student-form-container {
+  background-color: var(--bg-color);
+}
+
+.modify-student-form-container .form-group {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 3fr 1fr;
+  min-height: 30px;
+  background-color: var(--bg-color);
+  // margin-bottom: 1em;
+  justify-items: right;
+}
+
+.modify-student-form-container .form-group .form-label {
+  height: 24px;
+
+}
+
+.modify-student-form-container .form-group .form-input {
+  background-color: var(--bg-color);
+  color: var(--fg-color-1);
+  border: 1px solid var(--fg-color-2);
+  padding: 0 1em 0 1em;
+  height: 24px;
+  text-align: right;
+  min-width: 220px;
+}
+
+.modify-student-form-container .form-group input[type=number] {
+  text-align: left;
+}
+
+.modify-student-form-container .form-group select {
+  text-align: left;
+  width: 250px;
+}
+
+
+.modify-student-form-container .form-group input::file-selector-button {
+  background-color: var(--bg-color);
+  color: var(--fg-color-2);
+  height: 24px;
+  border: 1px solid var(--fg-color-2);
+  cursor: pointer;
+  width: 80px;
+  margin-right: 20px;
+}
+
+.modify-student-form-container .form-group input::file-selector-button:hover {
+  background-color: var(--fg-color-1);
+  color: var(--bg-color);
+  border: 1px solid var(--bg-color);
+}
+
+.modify-student-form-container .form-group input::file-selector-button:active {
+  background-color: var(--fg-color-2);
+  color: var(--fg-color-1);
+  border: 1px solid var(--fg-color-2);
+}
+
+
+.modify-student-form-container .form-group input[type=file] {
+  width: 230px;
+  border: none;
+  text-align: left;
+}
+
+.modify-student-form-container .errors {
+  margin-bottom: 2em;
+}
+
+.modify-student-form-container .text-danger {
+  padding: 0 5px 0 5px;
+  background-color: var(--error-color);
+  color: var(--bg-color);
+  float: right;
+  margin: 2px 0 0 5px;
+}
+
+.modify-student-form-container .section-title {
+  text-align: right;
+  margin: 2em 0 3em 10px;
+  padding-right: 10px;
+  background-color: var(--fg-color-2);
+  color: var(--bg-color);
+}
+
+.modify-student-form-container .form-submit {
+  margin: 1em 1em 10em 1em;
+}
+
+.modify-student-form-container input[type="file"] {
+  // display: none;
+}
+
+.modify-student-form-container .change-picture {
+  width: 200px;
+  cursor: pointer;
+}
+
+.modify-student-form-container .change-picture img {
+  width: 200px;
+}
+
+.modify-student-form-container .change-picture:hover {
+  filter: brightness(50%);
+}

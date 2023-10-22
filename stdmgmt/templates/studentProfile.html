@@ -11,7 +11,7 @@
 
       <div class="left-content-wrapper">
         <div class="left-content">
-          <button class="button">modify</button>
+          <button class="button" onclick="window.location.replace(window.location.origin + '/modifyStudent/' + {{ student.registrationNumber }});">modify</button>
           <img class="profile-pic" src="{{ url_for('static', filename='studentPics/{}'.format(student.picture)) }}" alt="profile-picture">
 
           <div class="french-name">

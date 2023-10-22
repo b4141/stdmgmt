@@ -40,3 +40,35 @@ class Student(db.Model):
         return f"sn: {self.registrationNumber}, lastName: {self.frenchLastName}, jDate: {self.joiningDate}"
 
 
+    def fullDict(self):
+        return {
+            'registrationNumber': self.registrationNumber,
+            'picture': self.picture,
+            'frenchLastName': self.frenchLastName,
+            'frenchFirstName': self.frenchFirstName,
+            'arabicLastName': self.arabicLastName,
+            'arabicFirstName': self.arabicFirstName,
+            'grade': self.grade,
+            'nationality': self.nationality,
+            'bloodGroup': self.bloodGroup,
+            'birthDate': self.birthDate,
+            'birthPlace': self.birthPlace,
+            'fatherName': self.fatherName,
+            'fatherProfession': self.fatherProfession,
+            'motherName': self.motherName,
+            'motherProfession': self.motherProfession,
+            'address': self.address,
+            'parentsDivorced': self.parentsDivorced,
+            'fatherDead': self.fatherDead,
+            'motherDead': self.motherDead,
+            'fatherDeathDate': self.fatherDeathDate,
+            'motherDeathDate': self.motherDeathDate,
+            'siblingsNumber': self.siblingsNumber,
+            'joiningDate': self.joiningDate,
+            'arrivalDate': self.arrivalDate,
+            'departureDate': self.departureDate,
+            'phoneNumber': self.phoneNumber,
+            'parentPhoneNumber': self.parentPhoneNumber,
+            'submit': False,
+            'csrf_token': None,
+        }

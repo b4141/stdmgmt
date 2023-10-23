@@ -34,7 +34,7 @@ class StudentRegistrationForm(FlaskForm):
     departureDate = DateField('departureDate', validators=[DataRequired()])
     phoneNumber = StringField('phoneNumber', validators=[DataRequired(), Length(min=2, max=100)])
     parentPhoneNumber = StringField('parentPhoneNumber', validators=[Length(min=2, max=100)])
-    submit = SubmitField('Submit')
+    submit = SubmitField('حفظ')
 
 
 class StudentModifyForm(FlaskForm):
@@ -68,6 +68,6 @@ class StudentModifyForm(FlaskForm):
     departureDate = DateField('departureDate', validators=[])
     phoneNumber = StringField('phoneNumber', validators=[Length(min=2, max=100)])
     parentPhoneNumber = StringField('parentPhoneNumber', validators=[Length(min=2, max=100)])
-    submit = SubmitField('Submit')
+    submit = SubmitField('حفظ')
 
 

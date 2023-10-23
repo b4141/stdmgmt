@@ -1,5 +1,5 @@
 import os
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from stdmgmt import app, db
 from stdmgmt.forms import StudentRegistrationForm, StudentModifyForm
 from stdmgmt.models import Student
@@ -28,6 +28,11 @@ def deleteStudent():
                 deletPicture(student.picture)
                 db.session.delete(student)
                 db.session.commit()
+                flash("تم حذف الطالب بنجاح", "success")
+                return jsonify("success")
+            else:
+                flash("هناك خطأ ما", "error")
+                return jsonify("success")
             
     return render_template('index.html', title="home page")
 
@@ -37,6 +42,16 @@ def deleteStudent():
 def modifyStudent(studentNumber):
     student = Student.query.filter(Student.registrationNumber == str(studentNumber)).first()
     form = StudentModifyForm()
+    print()
+    print()
+    print()
+    print(student)
+    print()
+    print()
+    print()
+    if student == None:
+        flash("لا يوجد طالب بالمعرف السابق", "error")
+        return redirect(url_for('index'))
 
     if form.validate_on_submit():
 

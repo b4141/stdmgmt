@@ -495,6 +495,12 @@
           headers: {
             "Content-type": "application/json; charset=UTF-8"
           }
+        })
+        .then((response) => response.json())
+        .then((json) => {
+          if (json === "success" || json === "error"){
+            window.location.replace(window.location.origin);
+          }
         });
       }
 

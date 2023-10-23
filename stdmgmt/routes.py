@@ -25,7 +25,7 @@ def deleteStudent():
         if postJsonData["action"] == "deleteStudent":
             student = Student.query.filter(Student.id == postJsonData["studentId"]).first()
             if (postJsonData["studentId"] == student.id) and (postJsonData["studentRegistrationNumber"] == student.registrationNumber):
-                #__need_to_do_some_cleaning_like_delete_the_picture
+                deletPicture(student.picture)
                 db.session.delete(student)
                 db.session.commit()
             

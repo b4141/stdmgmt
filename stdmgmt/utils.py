@@ -18,6 +18,11 @@ def saveStudentPicture(formPicture, pictureName):
     formPicture.save(picture_path)
     return picture_fn
 
+def deletPicture(pictureName):
+    picture_path = os.path.join(app.root_path, 'static/studentPics', pictureName)
+    os.remove(picture_path)
+    
+
 def fillForm(form, studentData):
     form.registrationNumber.data = studentData.registrationNumber
     form.picture.data = studentData.picture

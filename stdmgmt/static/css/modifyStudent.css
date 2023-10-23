@@ -91,7 +91,7 @@
 }
 
 .modify-student-form-container input[type="file"] {
-  // display: none;
+  display: none;
 }
 
 .modify-student-form-container .change-picture {

@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, SelectField, SubmitField, DateField, IntegerField, BooleanField
+from wtforms import StringField, SelectField, SubmitField, DateField, IntegerField, BooleanField, PasswordField
 from wtforms.validators import DataRequired, Length, NumberRange
 
 class StudentRegistrationForm(FlaskForm):
@@ -72,5 +72,5 @@ class StudentModifyForm(FlaskForm):
 
 
 class adminLoginForm(FlaskForm):
-    password = StringField('password', validators=[DataRequired(), Length(min=2, max=100)])
+    password = PasswordField('password', validators=[DataRequired(), Length(min=2, max=100)])
     submit = SubmitField('دخول')

@@ -17,10 +17,10 @@ def login():
     if form.validate_on_submit():
         if form.data['password'] == getPassword():
             session['admin'] = 'admin'
-            flash('loged in', 'success')
+            flash('تم تسجيل الدخول ', 'success')
             return redirect(url_for('index'))
         else:
-            flash('loged in', 'error')
+            flash('كلمة السر خاطئة', 'error')
             return redirect(url_for('login'))
         
     return render_template('login.html', title="loginPage page", form=form)

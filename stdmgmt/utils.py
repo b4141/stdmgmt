@@ -4,6 +4,9 @@ from stdmgmt.models import Student
 import os
 
 
+def getPassword():
+    return app.config["adminPw"]
+
 def isNotLoggedIn(session):
     if session['admin'] == 'admin':
         return False

@@ -15,7 +15,7 @@ def login():
 
     form = adminLoginForm()
     if form.validate_on_submit():
-        if form.data['password'] == 'admin':
+        if form.data['password'] == getPassword():
             session['admin'] = 'admin'
             flash('loged in', 'success')
             return redirect(url_for('index'))

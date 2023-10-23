@@ -3,6 +3,13 @@ from stdmgmt import app
 from stdmgmt.models import Student
 import os
 
+
+def isNotLoggedIn(session):
+    if session['admin'] == 'admin':
+        return False
+
+    return True
+        
 def saveStudentPicture(formPicture, pictureName):
     if pictureName != None:
         print("name provided")

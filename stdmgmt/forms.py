@@ -71,3 +71,6 @@ class StudentModifyForm(FlaskForm):
     submit = SubmitField('حفظ')
 
 
+class adminLoginForm(FlaskForm):
+    password = StringField('password', validators=[DataRequired(), Length(min=2, max=100)])
+    submit = SubmitField('دخول')

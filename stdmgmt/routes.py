@@ -1,25 +1,62 @@
 import os
-from flask import render_template, flash, redirect, url_for, request, jsonify
+from flask import render_template, flash, redirect, url_for, request, jsonify, session
 from stdmgmt import app, db
-from stdmgmt.forms import StudentRegistrationForm, StudentModifyForm
+from stdmgmt.forms import StudentRegistrationForm, StudentModifyForm, adminLoginForm
 from stdmgmt.models import Student
 from stdmgmt.utils import *
 
 
 
+@app.route("/login/", methods=['GET', 'POST'])
+def login():
+    if not isNotLoggedIn(session):
+        print(isNotLoggedIn(session))
+        return redirect(url_for('index'))
+
+    form = adminLoginForm()
+    if form.validate_on_submit():
+        if form.data['password'] == 'admin':
+            session['admin'] = 'admin'
+            flash('loged in', 'success')
+            return redirect(url_for('index'))
+        else:
+            flash('loged in', 'error')
+            return redirect(url_for('login'))
+        
+    return render_template('login.html', title="loginPage page", form=form)
+
+
+@app.route("/logout")
+def logout():
+    if isNotLoggedIn(session):
+        return redirect(url_for('login'))
+    else:
+        session['admin'] = 'bob'
+        return redirect(url_for('login'))
+    return render_template('index.html', title="home page")
+
 @app.route("/")
 def index():
+    if isNotLoggedIn(session):
+        return redirect(url_for('login'))
+
     return render_template('index.html', title="home page")
 
 
 @app.route("/studentProfile/<studentNumber>")
 def studentProfile(studentNumber):
+    if isNotLoggedIn(session):
+        return redirect(url_for('login'))
+
     student = Student.query.filter(Student.registrationNumber == str(studentNumber)).first()
     return render_template('studentProfile.html', title="student profile", student=student)
 
 
 @app.route("/deleteStudent", methods=['GET', 'POST'])
 def deleteStudent():
+    if isNotLoggedIn(session):
+        return redirect(url_for('login'))
+
     if request.method == 'POST':
         postJsonData = request.get_json()
         if postJsonData["action"] == "deleteStudent":
@@ -40,15 +77,11 @@ def deleteStudent():
 
 @app.route("/modifyStudent/<studentNumber>", methods=['GET', 'POST'])
 def modifyStudent(studentNumber):
+    if isNotLoggedIn(session):
+        return redirect(url_for('login'))
+
     student = Student.query.filter(Student.registrationNumber == str(studentNumber)).first()
     form = StudentModifyForm()
-    print()
-    print()
-    print()
-    print(student)
-    print()
-    print()
-    print()
     if student == None:
         flash("لا يوجد طالب بالمعرف السابق", "error")
         return redirect(url_for('index'))
@@ -75,6 +108,9 @@ def modifyStudent(studentNumber):
 
 @app.route("/addStudent", methods=['GET', 'POST'])
 def addStudent():
+    if isNotLoggedIn(session):
+        return redirect(url_for('login'))
+
     form = StudentRegistrationForm()
     if form.validate_on_submit():
         try:

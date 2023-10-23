@@ -80,15 +80,15 @@ def addStudent():
         try:
             if Student.query.filter(Student.registrationNumber == str(form.registrationNumber.data)).first():
                 print("student exists")
-                flash(f'the registration number "{form.registrationNumber.data}" already exists', "error")
+                flash(f'رقم التسجيل ( {form.registrationNumber.data} ) موجود بالفعل', "error")
                 return redirect(url_for('index'))
                 
             student = createStudent(form)
             db.session.add(student)
             db.session.commit()
-            flash("Successfully added a new Student", "success")
+            flash("تمت إضافة طالب جديد بنجاح", "success")
         except:
-            flash(f"there was an error, try again, you probably got something wrong", "error")
+            flash(f"حدث خطأ، حاول مرة أخرى، ربما حدث خطأ ما", "error")
             
         return redirect(url_for('index'))
 

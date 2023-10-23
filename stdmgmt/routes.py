@@ -1,5 +1,5 @@
 import os
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from stdmgmt import app, db
 from stdmgmt.forms import StudentRegistrationForm, StudentModifyForm
 from stdmgmt.models import Student
@@ -16,6 +16,20 @@ def index():
 def studentProfile(studentNumber):
     student = Student.query.filter(Student.registrationNumber == str(studentNumber)).first()
     return render_template('studentProfile.html', title="student profile", student=student)
+
+
+@app.route("/deleteStudent", methods=['GET', 'POST'])
+def deleteStudent():
+    if request.method == 'POST':
+        postJsonData = request.get_json()
+        if postJsonData["action"] == "deleteStudent":
+            student = Student.query.filter(Student.id == postJsonData["studentId"]).first()
+            if (postJsonData["studentId"] == student.id) and (postJsonData["studentRegistrationNumber"] == student.registrationNumber):
+                #__need_to_do_some_cleaning_like_delete_the_picture
+                db.session.delete(student)
+                db.session.commit()
+            
+    return render_template('index.html', title="home page")
 
 
 

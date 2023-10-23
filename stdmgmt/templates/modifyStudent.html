@@ -485,7 +485,17 @@
       }
 
       function deleteStudent(studentId){
-        console.log(studentId)
+        fetch(`${window.location.origin}/deleteStudent` , {
+          method: "POST",
+          body: JSON.stringify({
+            studentId: {{ student.id }},
+            studentRegistrationNumber: "{{ student.registrationNumber }}",
+            action: "deleteStudent"
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
+        });
       }
 
     </script>

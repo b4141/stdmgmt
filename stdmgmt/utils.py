@@ -8,7 +8,7 @@ def getPassword():
     return app.config["adminPw"]
 
 def isNotLoggedIn(session):
-    if session['admin'] == 'admin':
+    if session.get('admin') == 'admin':
         return False
 
     return True
